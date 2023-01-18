@@ -1,0 +1,22 @@
+{
+  "name": "crash-course",
+  "version": "1.0.0",
+  "description": "This repo serves as a documentation of key concepts I learned while following The Net Ninja's `Node.js Crash Course Tutorial` on [YouTube](https://www.youtube.com/watch?v=zb3Qk8SG5Ms&list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU) ## Modules & File System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alain-kubwayo/node-js-crash-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alain-kubwayo/node-js-crash-course/issues"
+  },
+  "homepage": "https://github.com/alain-kubwayo/node-js-crash-course#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
