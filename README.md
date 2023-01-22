@@ -85,6 +85,21 @@ Basics of Node
 * Getting & Saving Data
 * Outputting Documents in Views
 
+## GET, POST, & DELETE Requests
+* Request Types
+    * GET requests to get a resource
+    * POST requests to create new data (e.g. a new blog)
+    * DELETE requests to delete data (e.g. delete a blog)
+    * PUT requests to update data (e.g. update a blog)
+* POST Requests
+* Route Parameters: variable parts of the route that may change value
+    * `localhost:3000/blogs/:id`
+    * `localhost:3000/blogs/123`
+    * `localhost:3000/blogs/50`
+    * `localhost:3000/blogs/hello`
+* DELETE requests
+
+
 ### PS
 * `npm init` to generate a `package.json` file
 * `npm install express`

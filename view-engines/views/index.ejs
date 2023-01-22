@@ -7,8 +7,10 @@
         <h2>All Equipment</h2>
         <% if(equipment.length > 0) { %>
             <% equipment.forEach(e => { %>
-                <h3 class="name"><%= e.name %></h3>
-                <p class="snippet"><%= e.snippet %></p>
+                <a href="/<%= e._id %>">
+                    <h3 class="name"><%= e.name %></h3>
+                    <p class="snippet"><%= e.snippet %></p>
+                </a>
             <% })%>
         <% } else { %>
             <p>There is no equipment to display!</p>

@@ -39,6 +39,7 @@ app.use((req, res, next) => {
 
 // middleware & static files
 app.use(express.static('public')); // public folder will be made available as a static file to the frontend
+app.use(express.urlencoded({extended: true})); // needed when POSTing data from form
 
 // use morgan
 app.use(morgan('dev')); // 'dev', 'tiny'
@@ -109,6 +110,31 @@ app.get('/equipment', (req, res) => {
             equipment: result
         }))
         .catch(err => console.log(err));
+})
+
+app.post('/equipment', (req, res) => {
+    // console.log(req.body);
+    const equipment = new Equipment(req.body);
+    equipment.save()
+        .then(result => res.redirect('/equipment'))
+        .catch(err => console.log(err));
+})
+
+app.get('/:id', (req, res) => {
+    const id = req.params.id;
+    Equipment.findById(id)
+        .then(result => res.render('details', {title: 'Equipment Details', equipment: result}))
+        .catch(err => console.log(err));
+})
+
+app.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    Equipment.findByIdAndDelete(id)
+        .then(result => {
+            // We can't use redirect because we're using/making AJAX request / Fetch API on the frontend. Instead, send some kind of JSON data
+            res.json({redirect: '/equipment'}) // this JSON, once back from server, can be received in frontend from where fetch was made
+        })
+        .catch(err => console.log(err))
 })
 
 app.get('/create', (req, res) => {
