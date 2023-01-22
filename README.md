@@ -36,7 +36,19 @@ Basics of Node
 * Partials to keep the code organized and maintainable 
 * Adding CSS
 
+## Middleware
 
+* What is a middleware? Code which runs (on the server) between getting a request and sending a response. `app.use(func)` is generally used to run some middleware code (can also be used to handle 404 request). You could also have more than one piece of middleware that runs on the server. Like `app.use(func)`, `app.use(func)`, `app.use(func)`. ! The functions that run in our get handlers are also essentially middleware. The `use` method runs for every type of request to all routes including `POST` requests. Middleware runs from top to bottom in our code until we exit the process or explicitly send a response to the browser.
+* Middleware examples
+    * Logger middleware to log details of every request
+    * Authentication check middleware for protected routes
+    * Middleware to parse JSON data from requests
+    * Return 404 pages
+* Creating custom middleware(s)
+* Using `next()` (the browser hangs => next() used to tell Express to move on)
+* 3rd party middleware: made for us so we don't have to create our own if they already exist. E.g. `morgan` which can be installed with NPM like so,
+`npm install morgan`
+* Static files (images, CSS) with `app.use(express.static('public'))`
 ### PS
 * `npm init` to generate a `package.json` file
 * `npm install express`
