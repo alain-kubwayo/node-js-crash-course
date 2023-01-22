@@ -3,15 +3,15 @@
 <%- include('./partials/head.ejs') %> 
 <body>
     <%- include('./partials/nav.ejs') %>
-    <div class="equipments content">
-        <h2>All Equipments</h2>
-        <% if(equipments.length > 0) { %>
-            <% equipments.forEach(equipment => { %>
-                <h3 class="name"><%= equipment.name %></h3>
-                <p class="snippet"><%= equipment.snippet %></p>
+    <div class="equipment content">
+        <h2>All Equipment</h2>
+        <% if(equipment.length > 0) { %>
+            <% equipment.forEach(e => { %>
+                <h3 class="name"><%= e.name %></h3>
+                <p class="snippet"><%= e.snippet %></p>
             <% })%>
         <% } else { %>
-            <p>There are no equipments to display!</p>
+            <p>There is no equipment to display!</p>
         <% } %>
     </div>
     <%- include('./partials/footer.ejs') %>

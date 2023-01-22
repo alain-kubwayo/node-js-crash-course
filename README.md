@@ -49,6 +49,42 @@ Basics of Node
 * 3rd party middleware: made for us so we don't have to create our own if they already exist. E.g. `morgan` which can be installed with NPM like so,
 `npm install morgan`
 * Static files (images, CSS) with `app.use(express.static('public'))`
+
+## MongoDB
+* NoSQL (databases use collections, documents. E.g. MongoDB) vs SQL (databases use tables, rows, columns)
+* How does NoSQL database work? It's split up into collections: User Collection: User document, User document, User document | Blog Collection: Blog document, Blog document, Blog document
+    * document is like a record: Equpment Collection => equipment document => `{
+        "_id": ObjectId(12345),
+        "name": "dumbbells",
+        "snippet": "Some snippet",
+        "description": "Some long description..."
+    }`
+* MongoDB Setup with Atlas
+    Setup options:
+    1. Install MongoDB locally on our computer and use and then deploy it
+    2. Use a cloud database which is already hosted which can be a lot easier to manage [Link to MongoDB Atlas](https://www.mongodb.com/atlas/database) 
+* Mongoose, Models & Schemas
+    1. Mongoose is an ODM library (object document mapping library)
+    2. Schemas defines the structure of a type of data/document: properties & property types
+
+    User Schema:
+        - name (string), required
+        - age (number)
+        - bio (string), required
+
+    Equipment Schema:
+        - name (string), required
+        - snippet (string), required
+        - description (string), required 
+
+    3. Models allow us to communicate with database collections
+
+    Equpment Model [Equipment Schema] => get, save, delete, etc. => Database Equipment Collection
+
+    ! begin by installing `mongoose` like so `npm install mongoose`
+* Getting & Saving Data
+* Outputting Documents in Views
+
 ### PS
 * `npm init` to generate a `package.json` file
 * `npm install express`

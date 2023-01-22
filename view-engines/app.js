@@ -1,15 +1,23 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
+const Equipment = require('./models/equipment');
 
 // express app
 const app = express();
+
+// connect to mongodb
+const dbURI = "mongodb+srv://alainhk1:mongodbnode@gym_equipment.lnhliaw.mongodb.net/gym_equipment?retryWrites=true&w=majority";
+mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(result => app.listen(3003))
+    .catch(err => console.log(err));
 
 // register view engine 
 app.set('view engine', 'ejs');
 // app.set('views', 'myviews'); // in case your views are in a different folder like 'myviews'
 
 // listen for requests
-app.listen(3003);
+// app.listen(3003); // better to do it after a connection to the database has been established
 
 // our own custom middleware
 /*
@@ -35,16 +43,49 @@ app.use(express.static('public')); // public folder will be made available as a 
 // use morgan
 app.use(morgan('dev')); // 'dev', 'tiny'
 
-app.get('/', (req, res) => {  
-    const equipments = [
-        {name: "dumbell set", snippet: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, aperiam provident!"},
-        {name: "treadmill", snippet: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, aperiam provident!"},
-        {name: "training bench", snippet: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, aperiam provident!"},
-    ];
-    res.render('index', {
-        title: 'Home',
-        equipments
+// !SANDBOX ROUTES
+/* 
+// mongoose and mongo sandbox routes
+app.get('/add-equipment', (req, res) => {
+    const equipment = new Equipment({
+        name: "jumping ropes",
+        snippet: "The best in the Gym industry",
+        description: "Lorem ipsuhm descriptions.s.s kdsldldsjsslsljdlssljdlslsjsls"
     });
+
+    equipment.save()
+        .then(result => res.send(result))
+        .catch(err => console.log(err));
+})
+
+app.get('/all-equipment', (req, res) => {
+    Equipment.find()
+        .then(result => res.send(result))
+        .catch(err => console.log(err));
+})
+
+app.get('/single-equipment', (req, res) => {
+    Equipment.findById('63cd37d81fcc235dae22eca6')
+        .then(result => res.send(result))
+        .catch(err => console.log(err));
+})
+
+*/
+
+
+
+// !ROUTES
+app.get('/', (req, res) => {  
+    // const equipments = [
+    //     {name: "jumping ropes", snippet: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, aperiam provident!"},
+    //     {name: "treadmill", snippet: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, aperiam provident!"},
+    //     {name: "training bench", snippet: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, aperiam provident!"},
+    // ];
+    // res.render('index', {
+    //     title: 'Home',
+    //     equipments
+    // });
+    res.redirect('/equipment');
 });
 
 // app.use((req, res, next) => {
@@ -57,6 +98,18 @@ app.get('/about', (req, res) => {
         title: 'About'
     });
 });
+
+// Equipment routes
+
+app.get('/equipment', (req, res) => {
+    Equipment.find()
+        .sort({createdAt: -1}) // descending order: newest first
+        .then(result => res.render('index', {
+            title: 'All Equipment',
+            equipment: result
+        }))
+        .catch(err => console.log(err));
+})
 
 app.get('/create', (req, res) => {
     res.render('create', {
