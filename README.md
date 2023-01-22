@@ -99,7 +99,25 @@ Basics of Node
     * `localhost:3000/blogs/hello`
 * DELETE requests
 
+## Express Router & MVC
+* express router: used to split our routes into different files and manage them in small groups of routes that belong together to make our apps modular
+* MVC Basics:
+    * Stands for Model, View, Controller
+    * It's a way of structuring our code & files
+    * Keeps code more modular, reusable & easier to read
+    * Model -> Controller (holds controller functions that can be referenced in our routes files) -> View
+* Controllers
 
+## Further Functionalities (on the Gym Project)
+* Add another resource like categories to filter equipment by category
+* Add a date at which the equipment was added
+* Much more...
+
+## Further Concepts to explore
+* Node.js with Firebase Admin
+* Node.js Authentication
+* Handling payments with Node.js & Stripe
+* Much more...
 ### PS
 * `npm init` to generate a `package.json` file
 * `npm install express`

@@ -1,7 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const Equipment = require('./models/equipment');
+// const Equipment = require('./models/equipment');
+const equipmentRoutes = require('./routes/equipmentRoutes');
 
 // express app
 const app = express();
@@ -102,6 +103,12 @@ app.get('/about', (req, res) => {
 
 // Equipment routes
 
+app.use(equipmentRoutes);
+// app.use('/equipments', equipmentRoutes); // scope the url and remove '/equipments in the equipmentRoutes.js file
+
+// more reusable in case you change the url '/equipments' to '/equip' 
+
+/*
 app.get('/equipment', (req, res) => {
     Equipment.find()
         .sort({createdAt: -1}) // descending order: newest first
@@ -142,6 +149,8 @@ app.get('/create', (req, res) => {
         title: 'Create'
     });
 });
+
+*/
 
 // 404 page
 // kinda like a catch all. Reason why it should be at the bottom
