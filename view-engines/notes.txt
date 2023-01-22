@@ -1,0 +1,5 @@
+Server Side Rendering: process through which EJS templates are processed through the EJS view engine on the server, which then prepares the actual HTML page with dynamic processed data to be sent back to the browser
+
+          Server
+            |
+[ EJS - EJS View Engine - HTML ] => HTML => Browser

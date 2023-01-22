@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="create-equipment content">
+        <form>
+            <label for="name">Equipment name:</label>
+            <input type="text" id="name" required>
+            <br>
+            <label for="snippet">Equipment snippet:</label>
+            <input type="text" id="snippet" required>
+            <br>
+            <label for="description">Description:</label>
+            <textarea id="description" required></textarea>
+            <br>
+            <button>Submit</button>
+        </form>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

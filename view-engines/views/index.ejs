@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %> 
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="equipments content">
+        <h2>All Equipments</h2>
+        <% if(equipments.length > 0) { %>
+            <% equipments.forEach(equipment => { %>
+                <h3 class="name"><%= equipment.name %></h3>
+                <p class="snippet"><%= equipment.snippet %></p>
+            <% })%>
+        <% } else { %>
+            <p>There are no equipments to display!</p>
+        <% } %>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

@@ -27,6 +27,15 @@ Basics of Node
 * Routing & `HTML` pages
 * Redirects & 404 pages
 
+## View Engines
+
+* EJS: Embedded JavaScript templating engine: `npm install ejs`
+* Using view engine/template engine to inject dynamic data
+* EJS view engine (install with `npm install ejs`)
+* Passing data into views
+* Partials to keep the code organized and maintainable 
+* Adding CSS
+
 
 ### PS
 * `npm init` to generate a `package.json` file
